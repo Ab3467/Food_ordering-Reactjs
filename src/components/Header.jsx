@@ -1,6 +1,6 @@
 import {logoImage} from "../assets/logo.jpg"
 
-export default function Haeder() {
+export default function Header() {
   return (
     <header id="main-hreader">
       <div id="title">
