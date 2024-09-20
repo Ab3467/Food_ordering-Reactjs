@@ -14,7 +14,9 @@ export default function Meals() {
     
   return (
     <div>
-      
+      <ul id="meals">
+        
+      </ul>
     </div>
   )
 }
