@@ -10,7 +10,6 @@ export default function Meals() {
         const response = await fetch("http//localhost:3000/meals");
         const meals = response.json();
         setLoadedMeals(meals);
-        setLoadedMeals()
       }
    fetchMeals()
   }, [])
