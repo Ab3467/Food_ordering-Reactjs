@@ -4,7 +4,7 @@ export default function Haeder() {
   return (
     <header id="main-hreader">
       <div id="title">
-        <img src={logoImage} alt="" />
+        <img src={logoImage} alt="A restaurant" />
         <h1>React Food</h1>
       </div>
       <nav>
