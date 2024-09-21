@@ -8,17 +8,17 @@ export default function Meals() {
     async function fetchMeal() {
       let response = await fetch("http://localhost:3000/meals");
 
-      let meals = response.json();
+      let meals = await response.json();
       setLoadedMeals(meals);
     }
     fetchMeal();
   }, []);
 
   return (
-    <div>
+    <ul id="meals">
       {loadedMeals.map((meal) => (
         <MealsItems key={meal.id} meal={meal} />
       ))}
-    </div>
+    </ul>
   );
 }
