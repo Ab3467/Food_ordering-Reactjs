@@ -11,7 +11,7 @@ export default function Header() {
         <h1>React Food</h1>
       </div>
       <nav>
-        <Button>Cart (0)</Button>
+        <Button textOnly={true}>Cart (0)</Button>
       </nav>
     </header>
   );
