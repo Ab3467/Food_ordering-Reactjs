@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+
 import { currencyFormatter } from "../utils/formatting.js";
 
 export default function MealsItems({ meal }) {
@@ -21,12 +21,3 @@ export default function MealsItems({ meal }) {
   );
 }
 
-MealsItems.propTypes = {
-  meal: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    description: PropTypes.string,
-    image: PropTypes.string.isRequired,
-  }).isRequired,
-};
