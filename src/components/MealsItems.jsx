@@ -17,7 +17,6 @@ export default function MealsItems({ meal }) {
   );
 }
 
-// Adding prop validation using prop-types
 MealsItems.propTypes = {
   meal: PropTypes.shape({
     id: PropTypes.number.isRequired,
