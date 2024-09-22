@@ -17,6 +17,7 @@ export default function MealsItems({ meal }) {
             <Button>Add to Cart</Button>
           </p>
         </article>
+        
       </li>
     </>
   );
