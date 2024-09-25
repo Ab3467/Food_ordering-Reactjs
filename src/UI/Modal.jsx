@@ -1,10 +1,14 @@
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 
-export default function Modal() {
-  return createPortal(
-    <dialog>
+export default function Modal({ children, open }) {
+  useEffect(() => {
+    if (open) {
+    }
+  }, []);
 
-    </dialog>
-    ,document.getElementById('modal')
-  )
+  return createPortal(
+    <dialog>{children}</dialog>,
+    document.getElementById("modal")
+  );
 }
