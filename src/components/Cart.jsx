@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { CartContext } from "../store/CartContext";
 import { currencyFormatter } from "../utils/formatting";
 import Button from "./UI/Button";
+import { UserProgressContext } from "../store/UserProgressContext";
 
 export default function Cart() {
   const cartCtx = useContext(CartContext);
@@ -14,7 +15,7 @@ export default function Cart() {
   );
   const handleRemoveItem = () => {};
   return (
-    <Modal className="cart">
+    <Modal className="cart" open={userProgCtx.progress == "cart"}>
       <h2>Your Cart</h2>
       <ul>
         {cartCtx.items.map((item) => (
