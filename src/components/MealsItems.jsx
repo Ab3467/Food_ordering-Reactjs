@@ -22,5 +22,3 @@ export default function MealsItems({ meal }) {
     </>
   );
 }
-
-// this is for commit
