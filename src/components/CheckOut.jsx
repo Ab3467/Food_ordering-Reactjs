@@ -4,15 +4,18 @@ import { CartContext } from "../store/CartContext";
 import { currencyFormatter } from "../utils/formatting";
 import Input from "./UI/Input";
 import Button from "./UI/Button";
+import { UserProgressContext } from "../store/UserProgressContext";
 
 export default function CheckOut() {
   const cartCtx = useContext(CartContext);
+  const userProgressCtx = useContext(UserProgressContext)
+
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
   );
   return (
-    <Modal>
+    <Modal open={userProgressCtx.progress === "checkout"}>
       <form action="">
         <h2>Checkout </h2>
         <p>Total amount: {currencyFormatter.format(cartTotal)}</p>
