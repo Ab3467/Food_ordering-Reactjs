@@ -14,6 +14,11 @@ export default function CheckOut() {
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
   );
+
+  function handleClose(){
+    userProgressCtx.hideCheckout();
+  }
+
   return (
     <Modal open={userProgressCtx.progress === "checkout"}>
       <form action="">
@@ -28,7 +33,7 @@ export default function CheckOut() {
         </div>
 
         <p className="modal-actions">
-          <Button textOnly type="button">Close</Button>
+          <Button textOnly type="button" onClick={handleClose}>Close</Button>
           <Button>Submit Order</Button>
         </p>
       </form>
