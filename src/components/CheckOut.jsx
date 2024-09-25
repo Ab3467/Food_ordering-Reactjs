@@ -14,6 +14,7 @@ export default function CheckOut() {
       <form action="">
         <h2>Checkout </h2>
         <p>Total amount: {currencyFormatter.format(cartTotal)}</p>
+        
       </form>
     </Modal>
   );
