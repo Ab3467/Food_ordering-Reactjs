@@ -1,9 +1,8 @@
 
+import { createContext } from "react";
 
-export default function CartContext() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const CartContext = createContext({
+    items:[],
+    addItems : (item) => {},
+    removeIems : (item) => {}
+})
