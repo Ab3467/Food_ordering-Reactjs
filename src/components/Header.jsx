@@ -1,4 +1,4 @@
-import logoImage from "../assets/logo.jpg"; // Corrected import
+import logoImage from "../assets/logo.jpg";
 import Button from "../UI/button";
 import { useContext } from "react";
 import { CartContext } from "../store/CartContext";
