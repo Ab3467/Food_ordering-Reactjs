@@ -3,6 +3,7 @@ import Modal from "./UI/Modal";
 import { CartContext } from "../store/CartContext";
 import { currencyFormatter } from "../utils/formatting";
 import Input from "./UI/Input";
+import Button from "./UI/Button";
 
 export default function CheckOut() {
   const cartCtx = useContext(CartContext);
@@ -19,8 +20,14 @@ export default function CheckOut() {
         <Input label="Email Address" type="email" id="email" />
         <Input label="Street" type="text" id="street" />
         <div className="control-row">
-          <Input label="Postal Code" type="text" />
+          <Input label="Postal Code" type="text" id="postal code" />
+          <Input label="City" type="text" id="city" />
         </div>
+
+        <p className="modal-actions">
+          <Button textOnly>Close</Button>
+          <Button>Submit Order</Button>
+        </p>
       </form>
     </Modal>
   );
