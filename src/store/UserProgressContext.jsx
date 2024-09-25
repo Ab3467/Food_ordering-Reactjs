@@ -29,10 +29,10 @@ export function UserProgressContextProvider({ children }) {
 
   const userProgressCtx = {
     progress: userProgress,
-    showCart: showCart,
-    hideCart: hideCart,
-    hideCheckout: hideCheckout,
-    showCheckout: showCheckout,
+    showCart,
+    hideCart,
+    hideCheckout,
+    showCheckout,
   };
 
   return (
