@@ -13,7 +13,9 @@ export default function Cart() {
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
   );
-  const handleRemoveItem = () => {};
+  const handleRemoveItem = () => {
+    cartCtx.removeItem();
+  };
   return (
     <Modal className="cart" open={userProgCtx.progress == "cart"}>
       <h2>Your Cart</h2>
