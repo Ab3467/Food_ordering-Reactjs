@@ -8,7 +8,7 @@ import { createContext } from "react"
   hideCheckout : ()=> {},
  });
 
- export function UserProgressContextProvider({children}){
+ export default function UserProgressContextProvider({children}){
     return <UserProgressContext.Provider>
       {children}
     </UserProgressContext.Provider>
