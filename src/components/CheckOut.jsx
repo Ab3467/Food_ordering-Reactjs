@@ -28,7 +28,7 @@ export default function CheckOut() {
         </div>
 
         <p className="modal-actions">
-          <Button textOnly>Close</Button>
+          <Button textOnly type="button">Close</Button>
           <Button>Submit Order</Button>
         </p>
       </form>
