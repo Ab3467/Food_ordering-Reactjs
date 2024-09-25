@@ -1,8 +1,9 @@
+import { createPortal } from "react-dom";
 
 export default function Modal() {
-  return (
-    <div>
-      
-    </div>
+  return createPortal(
+    <dialog>
+        
+    </dialog>
   )
 }
