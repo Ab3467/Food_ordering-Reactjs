@@ -31,13 +31,13 @@ export function UserProgressContextProvider({ children }) {
     progress: userProgress,
     showCart,
     hideCart,
-    hideCheckout,
     showCheckout,
+    hideCheckout
   };
 
   return (
     <UserProgressContext.Provider value={userProgressCtx}>
-      {children}
+       {children}
     </UserProgressContext.Provider>
   );
 }

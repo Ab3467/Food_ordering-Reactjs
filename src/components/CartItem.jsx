@@ -2,8 +2,8 @@
 
 export default function CartItem() {
   return (
-    <div>
+    <li className="cart-item">
       
-    </div>
+    </li>
   )
 }
