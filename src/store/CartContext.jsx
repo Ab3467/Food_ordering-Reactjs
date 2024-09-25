@@ -3,5 +3,9 @@ import { createContext } from "react";
 const CartContext = createContext({
   items: [],
   addItems: (item) => {},
-  removeIems: (item) => {},
+  removeIems: (id) => {},
 });
+
+function CartContextProvider({children}){
+    return <CartContext.Provider></CartContext.Provider>
+}
