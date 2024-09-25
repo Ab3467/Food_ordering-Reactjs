@@ -40,7 +40,7 @@ export default function Cart() {
         <Button textOnly onClick={handleCloseCart}>
           Close
         </Button>
-        {cartCtx.items.lengt > 0 ? (
+        {cartCtx.items.length > 0 ? (
           <Button onClick={handleGoToCheckout}>Checkout</Button>
         ) : null}
       </p>
