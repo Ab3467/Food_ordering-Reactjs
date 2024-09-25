@@ -63,8 +63,8 @@ export default function CartContextProvider({ children }) {
 
   const cartContext = {
     items: cart.items,
-    addItem,
-    removeItem,
+    addItem: addItem,
+    removeItem: removeItem,
   };
 
   return (
