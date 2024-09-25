@@ -12,8 +12,6 @@ export default function Header() {
 
   return (
     <header id="main-header">
-      {" "}
-      {/* Fixed the typo in the id name */}
       <div id="title">
         <img src={logoImage} alt="A restaurant" />
         <h1>React Food</h1>
