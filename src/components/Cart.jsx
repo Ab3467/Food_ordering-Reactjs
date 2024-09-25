@@ -27,8 +27,8 @@ export default function Cart() {
             name={item.name}
             quantity={item.quantity}
             price={item.price}
-            onIncrease={()=> cartCtx.addItem(item)}
-            onDecrease={()=> cartCtx.removeItem(item.id)}
+            onIncrease={() => cartCtx.addItem(item)}
+            onDecrease={() => cartCtx.removeItem(item.id)}
           />
         ))}
       </ul>
@@ -37,7 +37,9 @@ export default function Cart() {
         <Button textOnly onClick={handleCloseCart}>
           Close
         </Button>
-        <Button onClick={handleCloseCart}>Checkout</Button>
+        {cartCtx.items.lengt > 0 ? (
+          <Button onClick={handleCloseCart}>Checkout</Button>
+        ) : null}
       </p>
     </Modal>
   );
