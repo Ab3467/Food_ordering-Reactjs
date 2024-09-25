@@ -25,8 +25,8 @@ export default function Cart() {
         ))}
       </ul>
       <p className="cart-total">{currencyFormatter.format(cartTotal)}</p>
-      <p className="modal-action">
-        <Button>Close</Button>
+      <p className="modal-actions">
+        <Button textOnly>Close</Button>
         <Button onClick={handleRemoveItem}>Checkout</Button>
       </p>
     </Modal>
