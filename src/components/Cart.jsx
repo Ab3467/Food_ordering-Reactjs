@@ -13,9 +13,9 @@ export default function Cart() {
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
   );
-  const handleRemoveItem = () => {
-    cartCtx.removeItem();
-  };
+  function handleCloseCart() {
+    userProgCtx.hideCart();
+  }
   return (
     <Modal className="cart" open={userProgCtx.progress == "cart"}>
       <h2>Your Cart</h2>
@@ -28,8 +28,10 @@ export default function Cart() {
       </ul>
       <p className="cart-total">{currencyFormatter.format(cartTotal)}</p>
       <p className="modal-actions">
-        <Button textOnly>Close</Button>
-        <Button onClick={handleRemoveItem}>Checkout</Button>
+        <Button textOnly onClick={handleCloseCart}>
+          Close
+        </Button>
+        <Button onClick={handleCloseCart}>Checkout</Button>
       </p>
     </Modal>
   );
