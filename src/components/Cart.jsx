@@ -6,14 +6,13 @@ import Button from "./UI/Button";
 
 export default function Cart() {
   const cartCtx = useContext(CartContext);
+  const userProgCtx = useContext(UserProgressContext);
 
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
   );
-  const handleRemoveItem = ()=>{
-    
-  }
+  const handleRemoveItem = () => {};
   return (
     <Modal className="cart">
       <h2>Your Cart</h2>
