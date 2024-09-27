@@ -24,6 +24,13 @@ export default function CheckOut() {
 
    const fd = new FormData(event.target);
    const dataEntries = Object.fromEntries(fd.entries)
+
+   fetch("http://localhost:3000/orders",{
+    method : 'POST',
+    headers: {
+        'Content-type': 'application/json'
+    }
+   })
    
   }
 
