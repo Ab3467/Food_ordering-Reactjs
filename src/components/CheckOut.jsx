@@ -8,19 +8,19 @@ import { UserProgressContext } from "../store/UserProgressContext";
 
 export default function CheckOut() {
   const cartCtx = useContext(CartContext);
-  const userProgressCtx = useContext(UserProgressContext)
+  const userProgressCtx = useContext(UserProgressContext);
 
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
   );
 
-  function handleClose(){
+  function handleClose() {
     userProgressCtx.hideCheckout();
   }
 
   return (
-    <Modal open={userProgressCtx.progress === "checkout"}>
+    <Modal open={userProgressCtx.progress === "checkout"} onClose={handleClose}>
       <form action="">
         <h2>Checkout </h2>
         <p>Total amount: {currencyFormatter.format(cartTotal)}</p>
@@ -33,7 +33,9 @@ export default function CheckOut() {
         </div>
 
         <p className="modal-actions">
-          <Button textOnly type="button" onClick={handleClose}>Close</Button>
+          <Button textOnly type="button" onClick={handleClose}>
+            Close
+          </Button>
           <Button>Submit Order</Button>
         </p>
       </form>

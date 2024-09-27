@@ -21,7 +21,7 @@ export default function Cart() {
     userProgCtx.showCheckout();
   }
   return (
-    <Modal className="cart" open={userProgCtx.progress == "cart"}>
+    <Modal className="cart" open={userProgCtx.progress == "cart"} onClose={handleCloseCart}>
       <h2>Your Cart</h2>
       <ul>
         {cartCtx.items.map((item) => (
