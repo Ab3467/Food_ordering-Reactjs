@@ -8,9 +8,10 @@ import { UserProgressContext } from "../store/UserProgressContext";
 import useHttp from "../hooks/UseHttp";
 
 const requestConfig = {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-type": "application/json",
+}
 }
 
 export default function CheckOut() {
