@@ -19,7 +19,7 @@ export default function CheckOut() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
 
-  const { isLoading: isSending, error, sendRequest } = useHttp(
+  const { data, isLoading: isSending, error, sendRequest } = useHttp(
     "http://localhost:3000/orders",
     requestConfig
   );
@@ -33,18 +33,22 @@ export default function CheckOut() {
     userProgressCtx.hideCheckout();
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const fd = new FormData(event.target);
     const customerData = Object.fromEntries(fd.entries()); // Add parentheses
 
-    sendRequest({
-      order: {
-        items: cartCtx.items,
-        customer: customerData,
-      },
-    });
+    try {
+      await sendRequest({
+        order: {
+          items: cartCtx.items,
+          customer: customerData,
+        },
+      });
+    } catch (error) {
+      console.error("Error submitting order:", error); // Add logging for debugging
+    }
   }
 
   let actions = (
@@ -52,12 +56,24 @@ export default function CheckOut() {
       <Button textOnly type="button" onClick={handleClose}>
         Close
       </Button>
-      <Button type="submit">Submit Order</Button> {/* Added type="submit" */}
+      <Button type="submit">Submit Order</Button>
     </>
   );
 
   if (isSending) {
     actions = <span>Sending order data...</span>;
+  }
+
+  if (data && !error) {
+    return (
+      <Modal open={userProgressCtx.progress === "checkout"} onClose={handleClose}>
+        <h2>Success!</h2>
+        <p>Your order was submitted successfully.</p>
+        <p className="modal-actions">
+          <Button onClick={handleClose}>Okay</Button>
+        </p>
+      </Modal>
+    );
   }
 
   return (
@@ -69,20 +85,13 @@ export default function CheckOut() {
         <Input label="Email Address" type="email" id="email" />
         <Input label="Street" type="text" id="street" />
         <div className="control-row">
-          <Input label="Postal Code" type="text" id="postal-code" /> {/* Changed id to "postal-code" */}
+          <Input label="Postal Code" type="text" id="postal-code" />
           <Input label="City" type="text" id="city" />
         </div>
-        {error && <Error title="failed to load" message={error}/>}
+        {error && <Error title="Failed to submit order" message={error} />}
 
-        <p className="modal-actions">
-          {actions}
-        </p>
+        <p className="modal-actions">{actions}</p>
       </form>
     </Modal>
   );
 }
-
-
-
-
-
