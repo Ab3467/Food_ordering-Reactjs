@@ -13,24 +13,29 @@ async function sendHttpsRequest(url, confing) {
   return resData;
 }
 
-export default function UseHttp() {
+export default function UseHttp(url, confing, initialData) {
   const [error, setError] = useState();
-  const [data, setData] = useState();
+  const [data, setData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(false);
-  const sendRequest = useCallback(async function sendRequest() {
-    setIsLoading(true);
-    try {
-      const resData = sendHttpsRequest();
-      setData(resData);
-    } catch (error) {
-      setError(error.message || "something went wrong");
-    }
-    setIsLoading(false);
-  }, []);
+  const sendRequest = useCallback(
+    async function sendRequest() {
+      setIsLoading(true);
+      try {
+        const resData = sendHttpsRequest(url, confing);
+        setData(resData);
+      } catch (error) {
+        setError(error.message || "something went wrong");
+      }
+      setIsLoading(false);
+    },
+    [url, confing]
+  );
 
   useEffect(() => {
-    sendRequest();
-  }, [sendRequest]);
+    if (confing && confing.method == "GET") {
+      sendRequest();
+    }
+  }, [sendRequest, confing]);
   return {
     data,
     isLoading,
