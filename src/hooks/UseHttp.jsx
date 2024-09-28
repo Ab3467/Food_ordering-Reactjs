@@ -17,11 +17,11 @@ export default function useHttp(url, config, initialData) {
   const [data, setData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(false);
 
-  const sendRequest = useCallback(async () => {
+  const sendRequest = useCallback(async function sendRequest(data) {
     setIsLoading(true);
     setError(null); // Reset the error before each request
     try {
-      const resData = await sendHttpsRequest(url, config);
+      const resData = await sendHttpsRequest(url, {...config,body : data});
       setData(resData);
     } catch (error) {
       setError(error.message || "Something went wrong");
