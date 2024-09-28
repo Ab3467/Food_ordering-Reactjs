@@ -1,41 +1,41 @@
-import { useEffect } from "react";
-import { useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 
-async function sendHttpsRequest(url, confing) {
-  const response = await fetch(url, confing);
+async function sendHttpsRequest(url, config) {
+  const response = await fetch(url, config);
 
   const resData = await response.json();
 
   if (!response.ok) {
-    throw new Error(resData.message || "something went wrong");
+    throw new Error(resData.message || "Something went wrong");
   }
 
   return resData;
 }
 
-export default function UseHttp(url, confing, initialData) {
-  const [error, setError] = useState();
+export default function useHttp(url, config, initialData) {
+  const [error, setError] = useState(null);
   const [data, setData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(false);
-  const sendRequest = useCallback(
-    async function sendRequest() {
-      setIsLoading(true);
-      try {
-        const resData = await sendHttpsRequest(url, confing);
-        setData(resData);
-      } catch (error) {
-        setError(error.message || "something went wrong");
-      }
-      setIsLoading(false);
-    },
-    [url, confing]
-  );
+
+  const sendRequest = useCallback(async () => {
+    setIsLoading(true);
+    setError(null); // Reset the error before each request
+    try {
+      const resData = await sendHttpsRequest(url, config);
+      setData(resData);
+    } catch (error) {
+      setError(error.message || "Something went wrong");
+    }
+    setIsLoading(false);
+  }, [url, config]);
 
   useEffect(() => {
-    if (confing && (confing.method == "GET" || !confing.method) || !confing ) {
+    // Automatically send the request if no method is defined or it's GET
+    if (!config || !config.method || config.method === "GET") {
       sendRequest();
     }
-  }, [sendRequest, confing]);
+  }, [sendRequest, config]);
+
   return {
     data,
     isLoading,
