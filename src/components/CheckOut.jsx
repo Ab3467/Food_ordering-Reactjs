@@ -5,10 +5,19 @@ import { currencyFormatter } from "../utils/formatting";
 import Input from "./UI/Input";
 import Button from "./UI/Button";
 import { UserProgressContext } from "../store/UserProgressContext";
+import useHttp from "../hooks/UseHttp";
+
+const requestConfig = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+}
 
 export default function CheckOut() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
+
+  useHttp("http://localhost:3000/orders");
 
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
