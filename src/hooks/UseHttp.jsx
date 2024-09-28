@@ -21,7 +21,7 @@ export default function UseHttp(url, confing, initialData) {
     async function sendRequest() {
       setIsLoading(true);
       try {
-        const resData = sendHttpsRequest(url, confing);
+        const resData = await sendHttpsRequest(url, confing);
         setData(resData);
       } catch (error) {
         setError(error.message || "something went wrong");
@@ -32,7 +32,7 @@ export default function UseHttp(url, confing, initialData) {
   );
 
   useEffect(() => {
-    if (confing && confing.method == "GET") {
+    if (confing && (confing.method == "GET" || !confing.method) || !confing ) {
       sendRequest();
     }
   }, [sendRequest, confing]);
