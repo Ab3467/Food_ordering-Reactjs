@@ -1,11 +1,11 @@
+async function sendHttpsRequest(url, confing) {
+  const response = await fetch(url);
 
-
-export default class UseHttp extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
+  if (!response.ok) {
+    throw new Error("something went wrong");
   }
+}
+
+export default function UseHttp() {
+  return <div></div>;
 }
