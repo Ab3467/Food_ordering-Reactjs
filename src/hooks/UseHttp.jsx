@@ -19,7 +19,7 @@ export default function useHttp(url, config, initialData) {
 
   const sendRequest = useCallback(async function sendRequest(data) {
     setIsLoading(true);
-    setError(null); // Reset the error before each request
+    setError(null); 
     try {
       const resData = await sendHttpsRequest(url, {...config,body : data});
       setData(resData);
@@ -30,7 +30,7 @@ export default function useHttp(url, config, initialData) {
   }, [url, config]);
 
   useEffect(() => {
-    // Automatically send the request if no method is defined or it's GET
+ 
     if (!config || !config.method || config.method === "GET") {
       sendRequest();
     }
