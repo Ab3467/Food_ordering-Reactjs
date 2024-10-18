@@ -14,3 +14,6 @@ export default function CartItem({ name, quantity, price, onIncrease , onDecreas
     </li>
   );
 }
+
+
+//  This is for commit
